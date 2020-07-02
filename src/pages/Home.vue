@@ -1,14 +1,34 @@
 <template>
   <div class="home">
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="200px">
+        <div class="logo">头条后台</div>
+        <el-row class="tac">
+          <el-menu
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b"
+            router
+            :default-active="$route.path"
+            >
+            <el-menu-item index="/article-list">
+              <span slot="title">文章列表</span>
+            </el-menu-item>
+            <el-menu-item index="/article-publish">
+              <span slot="title">发布文章</span>
+            </el-menu-item>
+          </el-menu>
+        </el-row>
+      </el-aside>
       <el-container>
         <el-header>
           <img :src="$axios.defaults.baseURL+user.head_img" alt="">
           <div class="nickname">{{user.nickname}}</div>
           <div class="logout" @click="logout">退出</div>
         </el-header>
-        <el-main>Main</el-main>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -34,7 +54,6 @@ export default {
       }
     }
   }
-
 }
 </script>
 
@@ -62,21 +81,22 @@ export default {
         margin: 0 10px;
       }
     }
-
     .el-aside {
       background-color: #D3DCE6;
       color: #333;
       text-align: center;
-      line-height: 200px;
+      .logo{
+        height: 60px;
+        line-height: 60px;
+        background-color: #333;
+        color:#fff;
+        font-weight: 700;
+      }
     }
-
     .el-main {
       background-color: #E9EEF3;
       color: #333;
-      text-align: center;
-      line-height: 160px;
     }
   }
 }
-
 </style>

@@ -44,7 +44,7 @@ export default {
         console.log(data)
         localStorage.setItem('token', data.token)
         localStorage.setItem('user', JSON.stringify(data.user))
-        this.$router.push('/home')
+        this.$router.push('/')
       } else {
         this.$message.error('用户名或密码错误')
       }
